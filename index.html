@@ -1,0 +1,114 @@
+<html>
+
+<head>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"> </script>
+    <!-- Load Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SHRED GENERATOR</title>
+</head>
+
+<body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Shredgenerator</a>
+            </nav>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                  <h1 class="my-4 text-center text-lg-left">Video Stream</h1>
+                    <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+                    <button id="data">Collect Data</button>
+                    <!-- Hyper params. -->
+                    <div class="hyper-params" style="display: none">
+                        <!-- Learning rate -->
+                        <div class="dropdown">
+                            <label>Learning rate</label>
+                            <div class="select">
+                                <select id="learningRate">
+                                    <option value="0.00001">0.00001</option>
+                                    <option selected value="0.0001">0.0001</option>
+                                    <option value="0.01">0.001</option>
+                                    <option value="0.03">0.003</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Batch size -->
+                        <div class="dropdown">
+                            <label>Batch size</label>
+                            <div class="select">
+                                <select id="batchSizeFraction">
+                                    <option value="0.05">0.05</option>
+                                    <option value="0.1">0.1</option>
+                                    <option selected value="0.4">0.4</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Epochs -->
+                        <div class="dropdown">
+                            <label>Epochs</label>
+                            <div class="select">
+                                <select id="epochs">
+                                    <option value="10">10</option>
+                                    <option selected value="20">20</option>
+                                    <option value="40">40</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Hidden units -->
+                        <div class="dropdown">
+                            <label>Hidden units</label>
+                            <div class="select">
+                                <select id="dense-units">
+                                    <option value="10">10</option>
+                                    <option selected value="100">100</option>
+                                    <option value="200">200</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- /.hyper-params -->
+                    <div class="panel-row trainAndPredictBtns" style="display: none">
+                        <button id="train">
+                            <span id="train-status">TRAIN MODEL</span>
+                        </button>
+                        <button id="predict">
+                            <span>PREDICT</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <h1 id="desc" class="align-middle status text-center my-4">Loading mobilenet...</h1>
+                </div>
+                <div class="col">
+                  <h1 class="my-4 text-center">Latest capture</h1>
+                    <canvas id="latestImage" src="" width="224" height="224"></canvas>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4 id="collectedNotesHeader" class="my-4 text-center text-lg-left">Fully collected notes (limited to </h4>
+                    <div id="noteCollection" class="col">
+                    </div>
+                </div>
+                <div class="col-10">
+                    <h4 class="my-4 text-center text-lg-left">CollectionO of last captured picture of a note</h4>
+                    <div id="imagesOfCollectedNotes" class="row text-center text-lg-left">
+                    </div>
+                </div>
+                
+            </div>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+</body>
+<!-- <script type="module" src="webcam.js"></script>  -->
+<script type="module" src="app.js"></script>
+
+</html>
